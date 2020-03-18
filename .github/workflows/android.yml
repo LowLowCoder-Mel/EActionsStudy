@@ -20,10 +20,13 @@ jobs:
       with:
         name: app
         path: app/build/outputs/apk/debug/app-debug.apk
-    - name: test
-      run: |
-        echo ::set-env name=TIME::$(date)
-    echo ::set-env name=TIME::$(date)
+    - uses: uraimo/run-on-arch-action@v1.0.5
+      id: runcmd
+      with:
+        architecture: aarch64
+        distribution: ubuntu18.04
+        run: |
+          echo ::set-env name=TIME::$(date)
     - name: create Release
       id: create_release
       uses: actions/create-release@latest
