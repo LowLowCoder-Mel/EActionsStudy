@@ -23,7 +23,7 @@ jobs:
         name: app
         path: app/build/outputs/apk/debug/app-debug.apk
     - name: Checkout code
-        uses: actions/checkout@master
+      uses: actions/checkout@master
     - name: Create Release
       id: create_release
       uses: actions/create-release@latest
