@@ -16,4 +16,9 @@ jobs:
       with:
         java-version: 1.8
     - name: 构建apk文件
-      run: ./MyApplication/gradlew build
+      run: ./gradlew assembleDebug
+    - name: Upload APK
+      uses: actions/upload-artifact@v1
+      with:
+        name: app
+        path: app/build/outputs/apk/debug/app-debug.apk
