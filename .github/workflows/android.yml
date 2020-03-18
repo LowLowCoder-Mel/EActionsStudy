@@ -20,13 +20,17 @@ jobs:
       with:
         name: app
         path: app/build/outputs/apk/debug/app-debug.apk
+    - name: test
+      run: |
+        echo ::set-env name=TIME::$(date)
+    echo ::set-env name=TIME::$(date)
     - name: create Release
       id: create_release
       uses: actions/create-release@latest
       env:
          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       with:
-         tag_name: ${{ TIME }}
+         tag_name: ${TIME}
          release_name: Release ${{ github.ref }}
          body: ${{ github.event.commits[0].message }}
          draft: false
