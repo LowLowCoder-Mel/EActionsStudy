@@ -33,7 +33,7 @@ jobs:
       env:
          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       with:
-         tag_name: ${{ steps.determine-tag.outputs.tag }}
+         tag_name: \"${{ steps.determine-tag.outputs.tag }}\"
          release_name: Release ${{ github.ref }}
          body: ${{ github.event.commits[0].message }}
          draft: false
