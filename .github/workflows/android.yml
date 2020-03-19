@@ -22,7 +22,7 @@ jobs:
         path: app/build/outputs/apk/debug/app-debug.apk
     - name: Determine tag
       id: determine-tag
-      run: echo "::set-env name=tag::$(date "+%Y.%m.%d")"
+      run: echo "::set-env name=tag::$(cat date "+%Y.%m.%d")"
     - name: Read CHANGELOG
       id: changelog
       run: |
