@@ -13,13 +13,13 @@ jobs:
       uses: actions/setup-java@v1
       with:
         java-version: 1.8
-    # - name: build apk file
-    #   run: ./gradlew assembleDebug
-    #- name: Upload APK
-    #  uses: actions/upload-artifact@v1
-    #  with:
-    #    name: app
-    #    path: app/build/outputs/apk/debug/app-debug.apk
+    - name: build apk file
+      run: ./gradlew assembleDebug
+    - name: Upload APK
+      uses: actions/upload-artifact@v1
+      with:
+        name: app
+        path: app/build/outputs/apk/debug/app-debug.apk
     - name: Determine tag
       id: time
       run: echo "::set-output name=tag::$(date "+%Y.%m.%d")"
@@ -50,5 +50,5 @@ jobs:
       with:
          upload_url: ${{ steps.create_release.outputs.upload_url }} # This pulls from the CREATE RELEASE step above, referencing it's ID to get its outputs object, which include a `upload_url`. See this blog post for more info: https://jasonet.co/posts/new-features-of-github-actions/#passing-data-to-future-steps 
          asset_path: ./app/build/outputs/apk/debug/app-debug.apk
-         asset_name: app-debug.apk
+         asset_name: enterprise-debug.apk
          asset_content_type: application/zip
