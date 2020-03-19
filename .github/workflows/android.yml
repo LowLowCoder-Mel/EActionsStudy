@@ -34,7 +34,7 @@ jobs:
       env:
          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       with:
-         tag_name: ${{ steps.time.tag  }}
+         tag_name: ${{ steps.changelog.body }}
          release_name: ${{ steps.changelog.body }}
          body: ${{ github.event.commits[0].message }}
          draft: false
