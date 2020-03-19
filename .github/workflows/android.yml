@@ -22,8 +22,7 @@ jobs:
     #    path: app/build/outputs/apk/debug/app-debug.apk
     - name: Determine tag
       id: time
-      run: |
-        echo "::set-env name=tag::$(date "+%Y.%m.%d")"
+      run: echo "::set-env name=tag::$(date "+%Y.%m.%d")"
     - name: Read CHANGELOG
       id: changelog
       run: |
@@ -35,7 +34,7 @@ jobs:
          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       with:
          tag_name: v1.0.0
-         release_name: ${{ steps.time.outputs.tag }}
+         release_name: v${{ steps.time.outputs.tag }}
          body: ${{ github.event.commits[0].message }}
          draft: false
          prerelease: false
