@@ -13,13 +13,13 @@ jobs:
       uses: actions/setup-java@v1
       with:
         java-version: 1.8
-    - name: build apk file
-      run: ./gradlew assembleDebug
-    - name: Upload APK
-      uses: actions/upload-artifact@v1
-      with:
-        name: app
-        path: app/build/outputs/apk/debug/app-debug.apk
+    # - name: build apk file
+    #   run: ./gradlew assembleDebug
+    #- name: Upload APK
+    #  uses: actions/upload-artifact@v1
+    #  with:
+    #    name: app
+    #    path: app/build/outputs/apk/debug/app-debug.apk
     - name: Determine tag
       id: time
       run: |
@@ -35,7 +35,7 @@ jobs:
          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       with:
          tag_name: v1.0.0
-         release_name: ${{ steps.time.tag }}
+         release_name: ${ steps.time.tag }
          body: ${{ github.event.commits[0].message }}
          draft: false
          prerelease: false
