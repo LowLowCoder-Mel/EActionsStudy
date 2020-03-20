@@ -31,4 +31,4 @@ jobs:
         with:
           token: ${{ secrets.SLACK_BOT_USER_OAUTH_ACCESS_TOKEN }}
           path: test.txt
-          channel: random
+          channel: test
