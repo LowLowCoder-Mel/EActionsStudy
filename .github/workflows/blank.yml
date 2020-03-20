@@ -7,6 +7,16 @@ on:
     branches: [ dev ]
 
 jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+    - name: setup jdk8
+      uses: actions/setup-java@v1
+      with:
+        java-version: 1.8
+    - name: build apk file
+      run: ./gradlew assembleDebug
   slack-notifications:
     runs-on: ubuntu-latest
     name: Sends a message to Slack when a push, a pull request or an issue is made
@@ -30,5 +40,5 @@ jobs:
         uses: adrey/slack-file-upload-action@master
         with:
           token: ${{ secrets.SLACK_BOT_USER_OAUTH_ACCESS_TOKEN }}
-          path: test.txt
+          path: ./app/build/outputs/apk/debug/app-debug.apk
           channel: test
