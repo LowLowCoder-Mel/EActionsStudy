@@ -26,7 +26,7 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v1
       - run: echo "Test file " > test.txt
-      - name: Upload to slack step
+      - name: Upload To slack step
         uses: adrey/slack-file-upload-action@master
         with:
           token: ${{ secrets.SLACK_BOT_USER_OAUTH_ACCESS_TOKEN }}
